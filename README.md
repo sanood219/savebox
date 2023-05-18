@@ -7,7 +7,7 @@ In admin side, admins can manage users,products,categories,discount coupons,orde
 
 The E-commerce demo can be viewed online here: https://savebox.ae
 
-Here is the screencast that show the E-commerce demo application in use: https://youtu.be/PEueuoEQ5S8
+Here is the screencast that show the E-commerce demo application in use: https://youtu.be/rPBbBHCdHhQ
 
 
 ## Getting started
@@ -15,8 +15,8 @@ To get started you can simply clone this ecommerce-django repository and install
 
 Clone the ecommerce-demo repository using git:
 ```python
-git clone https://github.com/noufida/ecommerce-django.git
-cd ecommerce-django
+https://github.com/sanood219/savebox.git
+cd savebox
 ```
 Create a virtual environment to install dependencies in and activate it:
 ```python
@@ -32,7 +32,7 @@ Note the ```(env)``` in front of the prompt. This indicates that this terminal s
 
 Once ```pip``` has finished downloading the dependencies:
 ```python
-(env)$ cd ecommerce-django
+(env)$ cd savebox
 (env)$ python3 manage.py runserver
 ```
 And navigate to ```http://127.0.0.1:8000/```
