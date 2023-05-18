@@ -1,0 +1,113 @@
+{% extends 'item/base.html' %}
+{% block content %}
+{% load static %}
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+  
+   
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                 <!-- Shop Section Begin -->
+   
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                 
+                        <div class="sidebar__filter">
+                           
+                           
+                           
+                        </div>
+                        <div class="sidebar__sizes">
+                     
+                     
+                        </div>
+                        <div class="sidebar__color">
+                          
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                       <div class="row">
+                        <div class="col-lg-12">
+                            {% if not wishproduct %}
+                            <img src="{% static 'image/empty_wishlist.svg' %}" alt="">
+                            {% endif %}
+                        </div>
+                       </div>               
+                                         
+                                       
+                      
+                    <div class="row">{% for pro in wishproduct %}
+                       
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="{{ pro.product.image.url }}">
+                                    <div class="label new">New</div>
+                                    <ul class="product__hover">
+                                        <li><a href="{{ pro.product.image.url }}" class="image-popup"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></a></li>
+                                        <li><a href="{% url 'remove_wish' pro.id %} "><i class="fa-solid fa-trash-can"></i></a></li>
+                                        <li><a href="{{ pro.product.get_url }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="{{ pro.product.get_url }}">{{ pro.product.brand }}</a></h6>
+                                    <!-- <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div> -->
+                                    <div class="product__price">₹{{ pro.product.price }}</div>
+                                </div>
+                            </div>
+                        </div>{%  endfor %}                      
+                      
+                     
+                    </div>
+                    {% if products.has_other_pages %}
+                     <div class="pagination">
+                         {% if products.has_previous %}
+                        <a style="margin-left: 270px;font-size: 20px;	max-width: 100%;color:black; font-weight: 500;"  href="?page={{products.previous_page_number}}">&laquo;</a>
+                        {% else %}
+                        <a style="margin-left: 270px;font-size: 20px;	max-width: 100%;color:rgb(163, 159, 159); font-weight: 500;cursor: default;"  href="#">&laquo;</a>
+                        {% endif %}
+                        {% for i in products.paginator.page_range %}
+                        {% if products.number == i %}
+                        <a  style="margin-left: 30px;font-size: 20px;	max-width: 100%;color:black; font-weight: 500;"  href="#">{{i}}</a>
+                        {% else %}
+                        <a  style="margin-left: 30px;font-size: 20px;	max-width: 100%;color:black; font-weight: 500;"  href="?page={{i}}">{{i}}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% if products.has_next %}
+                        <a  style="margin-left: 30px;font-size: 20px;	max-width: 100%;color:black; font-weight: 500;"  href="?page={{products.next_page_number}}">&raquo;</a>
+                        {% else %}
+                        <a style="margin-left: 30px;font-size: 20px;	max-width: 100%;color:rgb(163, 159, 159); font-weight: 500; cursor: default;"  href="#">&raquo;</a>
+                        {% endif %}
+                    </div>
+                      {% endif %}
+                </div>
+              
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+  
+
+ {% endblock %}
